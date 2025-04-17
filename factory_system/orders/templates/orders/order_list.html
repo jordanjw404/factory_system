@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}All Orders{% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3">All Orders</h1>
+    <a href="{% url 'order_create' %}" class="btn btn-primary">Add New Order</a>
+  </div>
+
+  <div class="table-responsive">
+    <table id="ordersTable" class="table table-striped table-bordered align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Job Name</th>
+          <th>Customer</th>
+          <th>Status</th>
+          <th>Due Date</th>
+          <th>Created</th>
+          <th>Type</th>
+          <th>Attachments</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+          <tr>
+            <td>{{ order.job_name }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>{{ order.status }}</td>
+            <td>{{ order.due_date }}</td>
+            <td>{{ order.created_at }}</td>
+            <td>{{ order.kitchen_or_bedroom }}</td>
+            <td>
+              {% for attachment in order.attachments.all %}
+                <a href="{{ attachment.file.url }}" download title="{{ attachment.file.name }}">📎</a>
+              {% empty %}
+                <span class="text-muted">No files</span>
+              {% endfor %}
+            </td>
+            <td>
+              <a href="{% url 'order_update' order.pk %}" class="btn btn-sm btn-warning">📝</a>
+              <a href="{% url 'order_delete' order.pk %}" class="btn btn-sm btn-danger">🗑️</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="8" class="text-center text-muted">No orders yet.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+
+{% block extra_scripts %}
+  <!-- DataTables -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#ordersTable').DataTable();
+    });
+  </script>
+  <script src="{% static 'orders/js/custom.js' %}"></script>
+{% endblock %}

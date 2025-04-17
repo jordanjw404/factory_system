@@ -1,0 +1,78 @@
+/* Base styles for body and fonts */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #f8f9fa;
+    margin: 20px;
+  }
+  
+  /* Modern Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  table thead tr {
+    background-color: #e7780a;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  table th, table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Header styling */
+  h1 {
+    font-size: 32px;
+    color: #009879;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for links and buttons */
+  a {
+    color: #009879;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  a.button {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 2px;
+    background-color: #009879;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  a.button:hover {
+    background-color: #007a63;
+  }
+  
+ 
+  .dataTables_filter input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  
